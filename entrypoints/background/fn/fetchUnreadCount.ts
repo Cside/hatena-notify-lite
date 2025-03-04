@@ -24,6 +24,8 @@ const fetchUnreadCount = async () => {
 
 export const fetchUnreadCountAndUpdateBadge = async () => {
   const count = await fetchUnreadCount();
-  await chrome.action.setBadgeText({ text: count.toString() });
+  await chrome.action.setBadgeText({
+    text: count === 0 ? "" : count.toString(),
+  });
   return count;
 };
