@@ -1,8 +1,8 @@
 {
   "name": "はてなの通知（β）",
-  "description": "はてなの通知",
+  "description": "はてなの各サービスからのお知らせ（通知）を受け取る",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "wxt",
