@@ -5,7 +5,10 @@ export default defineConfig({
   extensionApi: "chrome",
   manifest: {
     default_locale: "ja", // for edge
-    permissions: ["alarms"],
-    host_permissions: ["https://www.hatena.ne.jp/"],
+    permissions: ["alarms", "webRequest"],
+    host_permissions: [
+      "https://www.hatena.ne.jp/",
+      "https://accounts.hatena.ne.jp/",
+    ],
   },
 });

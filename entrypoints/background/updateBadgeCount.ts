@@ -1,19 +1,26 @@
+import { kyInstance } from "./kyInstance";
+import { timeStamp } from "./utils";
+
 const ALARM_NAME = "update-badge-count";
-const ALARM_INTERVAL_MINUTES = 1; // 15; //FIXME
+const ALARM_INTERVAL_MINUTES = 0.5; // 15; //FIXME
 const UNREAD_COUNT_API_URL = "https://www.hatena.ne.jp/notify/api/pull";
 
-// TODO: Retry
 const fetchUnreadCount = async () => {
-  const response = await fetch(UNREAD_COUNT_API_URL);
+  const res = await kyInstance.get(UNREAD_COUNT_API_URL, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+    },
+  });
   // TODO success かどうかチェック
   const data: {
     last_seen?: number;
     notices: {
       modified: number;
     }[];
-  } = await response.json();
+  } = await res.json();
 
-  const lastSeen = data.last_seen || 0;
+  const lastSeen = data.last_seen ?? 0;
   return data.notices.filter((notice) => notice.modified > lastSeen).length;
 };
 
@@ -45,7 +52,7 @@ export const updateBadgeCount = async () => {
   chrome.alarms.onAlarm.addListener(async (alarm) => {
     switch (alarm.name) {
       case ALARM_NAME: {
-        // TODO: retry
+        // FIXME: エラー発生した時、どうしましょ⋯
         const count = await fetchUnreadCount();
         await chrome.action.setBadgeText({
           text: count === 0 ? "" : String(count),
@@ -60,13 +67,3 @@ export const updateBadgeCount = async () => {
     }
   });
 };
-
-// ============================================================
-// Utils
-// ============================================================
-function timeStamp(unixTimeMilliseconds?: number) {
-  const date = unixTimeMilliseconds
-    ? new Date(unixTimeMilliseconds)
-    : new Date();
-  return date.toLocaleTimeString();
-}
