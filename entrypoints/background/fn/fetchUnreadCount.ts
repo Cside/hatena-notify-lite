@@ -9,7 +9,7 @@ type ResponseData = {
   }[];
 };
 
-const fetchUnreadCount = async () => {
+export const fetchUnreadCount = async () => {
   const res = await kyInstance.get(UNREAD_COUNT_API_URL, {
     method: "GET",
     headers: {
