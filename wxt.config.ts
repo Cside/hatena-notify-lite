@@ -7,8 +7,8 @@ export default defineConfig({
     default_locale: "ja", // for edge
     permissions: ["alarms", "webRequest"],
     host_permissions: [
-      "https://www.hatena.ne.jp/",
-      "https://accounts.hatena.ne.jp/",
+      "https://www.hatena.ne.jp/*",
+      "https://accounts.hatena.ne.jp/*",
     ],
   },
 });

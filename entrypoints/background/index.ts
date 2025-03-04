@@ -1,3 +1,4 @@
+import { handleLogin } from "./handleLogin";
 import { setBadgeColors } from "./setBadgeColors";
 import { updateBadgeRegularly } from "./updateBadgeRegularly";
 
@@ -9,5 +10,6 @@ export default defineBackground(
     })();
 
     updateBadgeRegularly();
+    handleLogin();
   }
 );
