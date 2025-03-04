@@ -1,31 +1,11 @@
-import { kyInstance } from "./kyInstance";
-import { timeStamp } from "./utils";
+import { fetchUnreadCountAndUpdateBadge } from "./fn/fetchUnreadCount";
+import { timeStamp } from "./fn/timeStamp";
 
 const ALARM_NAME = "update-badge-count";
 const ALARM_INTERVAL_MINUTES = 0.5; // 15; //FIXME
-const UNREAD_COUNT_API_URL = "https://www.hatena.ne.jp/notify/api/pull";
-
-const fetchUnreadCount = async () => {
-  const res = await kyInstance.get(UNREAD_COUNT_API_URL, {
-    method: "GET",
-    headers: {
-      "content-type": "application/json",
-    },
-  });
-  // TODO success かどうかチェック
-  const data: {
-    last_seen?: number;
-    notices: {
-      modified: number;
-    }[];
-  } = await res.json();
-
-  const lastSeen = data.last_seen ?? 0;
-  return data.notices.filter((notice) => notice.modified > lastSeen).length;
-};
 
 // NOTE: async function で実行してはいけない
-export const updateBadgeCount = async () => {
+export const updateBadgeRegularly = async () => {
   // アラームを作成
   chrome.runtime.onInstalled.addListener(async ({ reason }) => {
     if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
@@ -52,11 +32,8 @@ export const updateBadgeCount = async () => {
   chrome.alarms.onAlarm.addListener(async (alarm) => {
     switch (alarm.name) {
       case ALARM_NAME: {
-        // FIXME: エラー発生した時、どうしましょ⋯
-        const count = await fetchUnreadCount();
-        await chrome.action.setBadgeText({
-          text: count === 0 ? "" : String(count),
-        });
+        // NOTE: エラー発生した時、現状では特に通知せず、何もしていない。
+        const count = await fetchUnreadCountAndUpdateBadge();
         console.info(
           `[alarm:${ALARM_NAME}] Updated at ${timeStamp()}, Count: ${count}, Next execution: in ${ALARM_INTERVAL_MINUTES} minutes`
         );

@@ -1,5 +1,5 @@
 import ky from "ky";
-import { timeStamp } from "./utils";
+import { timeStamp } from "./fn/timeStamp";
 
 const MAX_RETRIES = 3;
 const RETRY_INTERVAL = 5_000;

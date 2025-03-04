@@ -1,5 +1,5 @@
 import { setBadgeColors } from "./setBadgeColors";
-import { updateBadgeCount } from "./updateBadgeCount";
+import { updateBadgeRegularly } from "./updateBadgeRegularly";
 
 export default defineBackground(
   // NOTE: async function is also supported
@@ -8,6 +8,6 @@ export default defineBackground(
       setBadgeColors();
     })();
 
-    updateBadgeCount();
+    updateBadgeRegularly();
   }
 );
