@@ -5,7 +5,7 @@ const ALARM_NAME = "update-badge-count";
 const ALARM_INTERVAL_MINUTES = 15;
 
 // NOTE: async function で実行してはいけない
-export const updateBadgeRegularly = async () => {
+export const updateBadgeRegularly = () => {
   // アラームを作成
   chrome.runtime.onInstalled.addListener(async ({ reason }) => {
     if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
@@ -14,14 +14,16 @@ export const updateBadgeRegularly = async () => {
         periodInMinutes: ALARM_INTERVAL_MINUTES,
       });
       console.info(
-        `[alarm:${ALARM_NAME}] Created at ${timeStamp()}. Next execution: in ${ALARM_INTERVAL_MINUTES} minutes`,
+        `[alarm:${ALARM_NAME}] Created at ${timeStamp()}. Next execution: in ${ALARM_INTERVAL_MINUTES} minutes`
       );
     } else {
       const alarm = await chrome.alarms.get(ALARM_NAME);
       if (!alarm) throw new Error(`Failed to get alarm: ${ALARM_NAME}`);
 
       console.info(
-        `[alarm:${alarm.name}] Next execution: ${timeStamp(alarm.scheduledTime)}`,
+        `[alarm:${alarm.name}] Next execution: ${timeStamp(
+          alarm.scheduledTime
+        )}`
       );
     }
   });
@@ -33,7 +35,7 @@ export const updateBadgeRegularly = async () => {
         // NOTE: エラー発生した時、現状では特に通知せず、何もしていない。
         const count = await fetchUnreadCountAndUpdateBadge();
         console.info(
-          `[alarm:${ALARM_NAME}] Updated at ${timeStamp()}, Count: ${count}, Next execution: in ${ALARM_INTERVAL_MINUTES} minutes`,
+          `[alarm:${ALARM_NAME}] Updated at ${timeStamp()}, Count: ${count}, Next execution: in ${ALARM_INTERVAL_MINUTES} minutes`
         );
         break;
       }

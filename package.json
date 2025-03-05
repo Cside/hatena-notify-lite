@@ -17,6 +17,7 @@
     "lint:biome": "biome lint .",
     "lint-fix:biome": "biome check --write --unsafe .",
     "lint": "pnpm run '/^lint:.+/'",
+    "format-fix": "pnpm run '/^format-fix:.+/'",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare"
   },
