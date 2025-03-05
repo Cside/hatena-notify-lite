@@ -1,6 +1,6 @@
 {
   "name": "はてなの通知（β）",
-  "description": "はてなの各サービスからのお知らせ（通知）を受け取る",
+  "description": "はてなからのお知らせを表示する",
   "private": true,
   "version": "0.0.1",
   "type": "module",
