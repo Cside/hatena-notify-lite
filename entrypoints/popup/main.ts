@@ -5,8 +5,6 @@ import "./style.css";
 
 const STATUS_CODE_BAD_REQUEST = 400;
 
-await chrome.action.setBadgeText({ text: "" });
-
 try {
   await fetchUnreadCount();
 } catch (error) {

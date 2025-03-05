@@ -7,7 +7,6 @@ const RETRY_INTERVAL = 5_000;
 // NOTE timeout error はリトライされない
 export const kyInstance = ky.create({
   // タイムアウトはデフォルト 10 秒なのでいじらない
-  timeout: 1,
   retry: {
     limit: MAX_RETRIES,
     delay: () => RETRY_INTERVAL,

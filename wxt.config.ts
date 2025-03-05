@@ -15,6 +15,7 @@ export default defineConfig({
     host_permissions: [
       "https://www.hatena.ne.jp/*",
       "https://accounts.hatena.ne.jp/*",
+      "https://blog.hatena.ne.jp/*",
     ],
   },
 });
