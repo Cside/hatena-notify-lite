@@ -1,3 +1,4 @@
+import { setBadgeNumber } from "./fn/setBadgeNumber";
 import { timeStamp } from "./fn/timeStamp";
 
 const TARGETS = [
@@ -21,7 +22,7 @@ export const markAsReadOnRequest = () => {
       async (details) => {
         if (details.method === config.method) {
           const count = 0;
-          await chrome.action.setBadgeText({ text: count.toString() });
+          await setBadgeNumber(count);
           console.info(
             `[${config.label}] Updated at ${timeStamp()}, Count: ${count}`,
           );

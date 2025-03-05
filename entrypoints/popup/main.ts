@@ -12,6 +12,8 @@ try {
     error instanceof HTTPError &&
     error.response.status === STATUS_CODE_BAD_REQUEST
   ) {
-    document.write("はてなにログインしてください");
+    document.body.innerHTML = `
+      <a href="https://accounts.hatena.ne.jp/login" target="_blank">はてなにログインしてください</a>
+    `;
   }
 }

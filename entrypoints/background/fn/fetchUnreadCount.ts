@@ -1,4 +1,5 @@
 import { kyInstance } from "../kyInstance";
+import { setBadgeNumber } from "./setBadgeNumber";
 
 const UNREAD_COUNT_API_URL = "https://www.hatena.ne.jp/notify/api/pull";
 
@@ -24,8 +25,6 @@ export const fetchUnreadCount = async () => {
 
 export const fetchUnreadCountAndUpdateBadge = async () => {
   const count = await fetchUnreadCount();
-  await chrome.action.setBadgeText({
-    text: count === 0 ? "" : count.toString(),
-  });
+  await setBadgeNumber(count);
   return count;
 };
