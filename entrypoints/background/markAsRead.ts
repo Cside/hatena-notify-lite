@@ -1,7 +1,7 @@
 import { fetchUnreadCountAndUpdateBadge } from "./fn/fetchUnreadCount";
 import { timeStamp } from "./fn/timeStamp";
 
-export const handleLogin = () => {
+export const markAsRead = () => {
   chrome.webRequest.onBeforeRedirect.addListener(
     async (details) => {
       if (details.method === "POST") {
