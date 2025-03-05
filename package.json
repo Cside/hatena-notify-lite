@@ -19,6 +19,8 @@
     "lint": "pnpm run '/^lint:.+/'",
     "format-fix": "pnpm run '/^format-fix:.+/'",
     "compile": "tsc --noEmit",
+    "check:ng-word": "./scripts/check-ng-words.sh",
+    "check": "pnpm run '/^(compile$|lint$|format$|check:)/'",
     "postinstall": "wxt prepare"
   },
   "devDependencies": {

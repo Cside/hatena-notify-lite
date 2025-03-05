@@ -14,16 +14,14 @@ export const updateBadgeRegularly = () => {
         periodInMinutes: ALARM_INTERVAL_MINUTES,
       });
       console.info(
-        `[alarm:${ALARM_NAME}] Created at ${timeStamp()}. Next execution: in ${ALARM_INTERVAL_MINUTES} minutes`
+        `[alarm:${ALARM_NAME}] Created at ${timeStamp()}. Next execution: in ${ALARM_INTERVAL_MINUTES} minutes`,
       );
     } else {
       const alarm = await chrome.alarms.get(ALARM_NAME);
       if (!alarm) throw new Error(`Failed to get alarm: ${ALARM_NAME}`);
 
       console.info(
-        `[alarm:${alarm.name}] Next execution: ${timeStamp(
-          alarm.scheduledTime
-        )}`
+        `[alarm:${alarm.name}] Next execution: ${timeStamp(alarm.scheduledTime)}`,
       );
     }
   });
@@ -35,7 +33,7 @@ export const updateBadgeRegularly = () => {
         // NOTE: エラー発生した時、現状では特に通知せず、何もしていない。
         const count = await fetchUnreadCountAndUpdateBadge();
         console.info(
-          `[alarm:${ALARM_NAME}] Updated at ${timeStamp()}, Count: ${count}, Next execution: in ${ALARM_INTERVAL_MINUTES} minutes`
+          `[alarm:${ALARM_NAME}] Updated at ${timeStamp()}, Count: ${count}, Next execution: in ${ALARM_INTERVAL_MINUTES} minutes`,
         );
         break;
       }
