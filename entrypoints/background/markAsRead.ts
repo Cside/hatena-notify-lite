@@ -4,11 +4,6 @@ import { timeStamp } from "./fn/timeStamp";
 const CONFIG = [
   // NOTE: ここで追加したドメインは wxt.config.ts にも追加する
   {
-    label: "onLogin",
-    method: "POST",
-    url: "https://accounts.hatena.ne.jp/login",
-  },
-  {
     label: "notice.iframe",
     method: "GET",
     url: "https://www.hatena.ne.jp/notify/notices.iframe", // TODO: index.html と重複してる

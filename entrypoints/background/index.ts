@@ -1,3 +1,4 @@
+import { handleLogin } from "./handleLogin";
 import { markAsReadOnRequest } from "./markAsRead";
 import { setBadgeColors } from "./setBadgeColors";
 import { updateBadgeRegularly } from "./updateBadgeRegularly";
@@ -10,6 +11,7 @@ export default defineBackground(
     })();
 
     updateBadgeRegularly();
+    handleLogin();
     markAsReadOnRequest();
   },
 );

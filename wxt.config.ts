@@ -13,6 +13,7 @@ export default defineConfig({
     default_locale: "ja", // for edge
     permissions: ["alarms", "webRequest"],
     host_permissions: [
+      // TODO: ドメインの共通化
       "https://www.hatena.ne.jp/*",
       "https://accounts.hatena.ne.jp/*",
       "https://blog.hatena.ne.jp/*",
