@@ -11,10 +11,17 @@
     "build:firefox": "wxt build -b firefox",
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
+    "format:biome": "biome format .",
+    "format-fix:biome": "biome format --write .",
+    "format": "pnpm run '/^format:.+/'",
+    "lint:biome": "biome lint .",
+    "lint-fix:biome": "biome check --write --unsafe .",
+    "lint": "pnpm run '/^lint:.+/'",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/chrome": "^0.0.307",
     "browserslist-to-esbuild": "^2.1.1",
     "typescript": "^5.6.3",

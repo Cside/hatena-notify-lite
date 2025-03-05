@@ -1,0 +1,27 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.6.1/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "lineWidth": 85
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedImports": "error",
+        "useExhaustiveDependencies": "off"
+      },
+      "suspicious": {
+        "useAwait": "error"
+      }
+    }
+  },
+  "files": {
+    "ignore": [".output/**/*", ".wxt/**/*", "vitest.config.ts.timestamp-*.mjs"]
+  }
+}
