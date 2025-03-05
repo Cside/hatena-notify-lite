@@ -14,6 +14,6 @@ export const handleLogin = () => {
         "https://accounts.hatena.ne.jp/login",
         "https://accounts.hatena.ne.jp/login?*",
       ],
-    }
+    },
   );
 };

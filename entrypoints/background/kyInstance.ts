@@ -28,13 +28,10 @@ export const kyInstance = ky.create({
         const elapsed = `${((Date.now() - startedAt) / 1_000).toFixed(2)}ms`;
 
         console.info(
-          [
-            `%c${timeStamp()}`,
-            elapsed,
-            res.status,
-            `${req.method} ${req.url}`,
-          ].join("\t"),
-          `color: ${res.ok ? "darkcyan" : "darkgoldenrod"}`
+          [`%c${timeStamp()}`, elapsed, res.status, `${req.method} ${req.url}`].join(
+            "\t",
+          ),
+          `color: ${res.ok ? "darkcyan" : "darkgoldenrod"}`,
         );
       },
     ],

@@ -11,5 +11,5 @@ export default defineBackground(
 
     updateBadgeRegularly();
     handleLogin();
-  }
+  },
 );
