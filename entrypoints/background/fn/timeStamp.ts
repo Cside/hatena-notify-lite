@@ -1,4 +1,5 @@
 export const timeStamp = (unixTimeMilliseconds?: number) => {
-  const date = unixTimeMilliseconds ? new Date(unixTimeMilliseconds) : new Date();
+  const date =
+    unixTimeMilliseconds === undefined ? new Date() : new Date(unixTimeMilliseconds);
   return date.toLocaleTimeString("ja-JP", { hour12: false });
 };

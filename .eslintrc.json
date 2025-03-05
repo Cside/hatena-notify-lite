@@ -1,0 +1,23 @@
+{
+  "root": true,
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json"
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "object-shorthand": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "@typescript-eslint/prefer-includes": "error",
+    "@typescript-eslint/no-unnecessary-condition": "error",
+    "@typescript-eslint/unbound-method": "error", // メソッドの変数代入とか禁止
+    "@typescript-eslint/no-floating-promises": ["error", { "ignoreIIFE": true }],
+    "@typescript-eslint/strict-boolean-expressions": "error",
+    "@typescript-eslint/prefer-nullish-coalescing": "error" // || でなく ??
+  },
+  "ignorePatterns": ["vitest.config.ts.timestamp-*.mjs"]
+}
