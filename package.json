@@ -14,8 +14,10 @@
     "format": "biome format .",
     "lint:biome": "biome lint .",
     "lint:eslint": "eslint --cache --report-unused-disable-directives 'entrypoints/**/*.ts'",
+    "lint:unused-code": "knip",
     "lint-fix:biome": "biome check --write --unsafe .",
     "lint-fix:eslint": "eslint --fix 'entrypoints/**/*.ts'",
+    "lint-fix:unused-code": "knip --fix-type exports",
     "lint": "pnpm run '/^lint:.+/'",
     "format-fix": "biome format --write .",
     "compile": "tsc --noEmit",
@@ -26,10 +28,11 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/chrome": "^0.0.307",
-    "eslint": "8.x",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
     "@typescript-eslint/parser": "^8.26.0",
     "browserslist-to-esbuild": "^2.1.1",
+    "eslint": "8.x",
+    "knip": "^5.45.0",
     "typescript": "^5.6.3",
     "wxt": "^0.19.13"
   },
