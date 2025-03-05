@@ -6,7 +6,7 @@ export default defineBackground(
   // NOTE: async function is also supported
   () => {
     (async () => {
-      setBadgeColors();
+      await setBadgeColors();
     })();
 
     updateBadgeRegularly();
