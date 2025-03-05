@@ -2,7 +2,7 @@ import { fetchUnreadCountAndUpdateBadge } from "./fn/fetchUnreadCount";
 import { timeStamp } from "./fn/timeStamp";
 
 const ALARM_NAME = "update-badge-count";
-const ALARM_INTERVAL_MINUTES = 0.5; // 15; // FIXME
+const ALARM_INTERVAL_MINUTES = 15;
 
 // NOTE: async function で実行してはいけない
 export const updateBadgeRegularly = () => {
