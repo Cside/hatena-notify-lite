@@ -1,5 +1,5 @@
 import { HTTPError } from "ky";
-import { fetchUnreadCountAndUpdateBadge } from "../background/fn/fetchUnreadCount";
+import { fetchUnreadCount } from "../background/fn/fetchUnreadCount";
 
 import "./style.css";
 
@@ -8,7 +8,7 @@ const STATUS_CODE_BAD_REQUEST = 400;
 await chrome.action.setBadgeText({ text: "" });
 
 try {
-  await fetchUnreadCountAndUpdateBadge();
+  await fetchUnreadCount();
 } catch (error) {
   if (
     error instanceof HTTPError &&

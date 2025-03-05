@@ -1,6 +1,5 @@
 {
-  "entry": ["./wxt.config.ts", "./entrypoints/**/*.ts"],
-  "project": [],
+  "entry": ["./wxt.config.ts", "./entrypoints/**/{main,index}.ts"],
   "ignore": [],
   "include": [
     "files",
