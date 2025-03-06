@@ -1,5 +1,5 @@
 {
-  "name": "はてなの通知（β）",
+  "name": "はてなの通知",
   "description": "はてなからのお知らせを表示する",
   "private": true,
   "version": "0.0.4",
