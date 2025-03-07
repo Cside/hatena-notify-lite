@@ -37,6 +37,7 @@
     "wxt": "^0.19.13"
   },
   "dependencies": {
-    "ky": "^1.7.5"
+    "axios": "^1.8.1",
+    "axios-retry": "^4.5.0"
   }
 }

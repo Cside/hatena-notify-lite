@@ -1,4 +1,4 @@
-import { HTTPError } from "ky";
+import { AxiosError } from "axios";
 import { fetchUnreadCount } from "../background/fn/fetchUnreadCount";
 import { setBadgeNumber } from "../background/fn/setBadgeNumber";
 
@@ -19,8 +19,8 @@ try {
   await fetchUnreadCount();
 } catch (error) {
   if (
-    error instanceof HTTPError &&
-    error.response.status === STATUS_CODE_BAD_REQUEST
+    error instanceof AxiosError &&
+    error.response?.status === STATUS_CODE_BAD_REQUEST
   ) {
     document.body.innerHTML = `
       <a href="https://accounts.hatena.ne.jp/login" target="_blank">はてなにログインしてください</a>
