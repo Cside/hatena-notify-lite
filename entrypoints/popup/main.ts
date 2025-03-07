@@ -1,7 +1,7 @@
 import { HTTPError } from "ky";
 import { fetchUnreadCount } from "../background/fn/fetchUnreadCount";
-
 import { setBadgeNumber } from "../background/fn/setBadgeNumber";
+
 import "./style.css";
 
 const STATUS_CODE_BAD_REQUEST = 400;
