@@ -1,5 +1,7 @@
+import { chromeAction } from "../../../src/chromeAction";
+
 export const setBadgeNumber = async (count: number) => {
-  await chrome.action.setBadgeText({
+  await chromeAction.setBadgeText({
     text: count === 0 ? "" : count.toString(),
   });
 };
