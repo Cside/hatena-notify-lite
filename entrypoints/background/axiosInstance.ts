@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import axiosRetry from "axios-retry";
 
 const MAX_RETRIES = 0; // 3; // FIXME
@@ -13,6 +13,15 @@ const instance = axios.create({
 axiosRetry(instance, {
   retries: MAX_RETRIES,
   retryDelay: () => RETRY_INTERVAL,
+});
+
+interface AxiosConfigWithStartedAt extends InternalAxiosRequestConfig {
+  startedAt: number;
+}
+
+instance.interceptors.request.use((config) => {
+  (config as AxiosConfigWithStartedAt).startedAt = Date.now();
+  return config;
 });
 
 instance.interceptors.response.use(
@@ -32,14 +41,35 @@ const COLOR_FOR = {
 };
 
 const logResponse = (res: AxiosResponse, color: string) =>
-  log(res.status, res.request?.method, res.request?.url, color);
+  log(
+    (res.config as AxiosConfigWithStartedAt).startedAt,
+    res.status,
+    res.request?.method,
+    res.request?.url,
+    color,
+  );
 
-const log = (status: number | string, method: string, url: string, color: string) =>
+const log = (
+  startedAt: number,
+  status: number | string,
+  method: string,
+  url: string,
+  color: string,
+) => {
+  const date = new Date();
   console.info(
     // biome-ignore lint/style/useTemplate:
-    "%c" + [new Date().toLocaleTimeString("ja-JP"), status, method, url].join("  "),
+    "%c" +
+      [
+        date.toLocaleTimeString("ja-JP"),
+        `${date.getTime() - startedAt}ms`,
+        status,
+        method,
+        url,
+      ].join("  "),
     `color: ${color}`,
   );
+};
 
 const responseLogger = (res: AxiosResponse): AxiosResponse => {
   logResponse(res, COLOR_FOR.SUCCESS);
@@ -52,6 +82,7 @@ const errorLogger = (error: unknown): unknown => {
       logResponse(error.response, COLOR_FOR.ERROR);
     } else {
       log(
+        (error.config as AxiosConfigWithStartedAt).startedAt,
         error.code === "ETIMEDOUT"
           ? "Timeout"
           : error.code === "ERR_NETWORK"
