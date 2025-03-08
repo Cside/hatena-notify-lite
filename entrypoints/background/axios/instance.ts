@@ -1,9 +1,9 @@
 import axios from "axios";
 import axiosRetry from "axios-retry";
-import { axiosLogging } from "./axiosLogging";
+import { axiosLogging } from "../axiosLogging";
 
-const MAX_RETRIES = 0; // 3; // FIXME
-const RETRY_INTERVAL = 1; // FIXME 5_000;
+const MAX_RETRIES = 3;
+const RETRY_INTERVAL = 5_000;
 const TIMEOUT = 10_000;
 
 const instance = axios.create({
