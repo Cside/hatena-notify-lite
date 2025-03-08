@@ -1,4 +1,4 @@
-import { axiosInstance } from "../axiosInstance";
+import { axiosInstance } from "../axios/instance";
 import { setBadgeNumber } from "./setBadgeNumber";
 
 const UNREAD_COUNT_API_URL = "https://www.hatena.ne.jp/notify/api/pull";
