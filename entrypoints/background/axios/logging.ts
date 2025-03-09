@@ -4,6 +4,7 @@ import {
   type AxiosResponse,
   type InternalAxiosRequestConfig,
 } from "axios";
+import { isNetworkError } from "axios-retry";
 
 interface AxiosConfigWithStartedAt extends InternalAxiosRequestConfig {
   startedAt: number;
@@ -40,7 +41,7 @@ const errorLogger = (error: unknown): unknown => {
         (error.config as AxiosConfigWithStartedAt).startedAt,
         error.code === "ETIMEDOUT"
           ? "Timeout"
-          : error.code === "ERR_NETWORK"
+          : isNetworkError(error)
             ? "NetworkError"
             : (error.code ?? "UndefinedCode"),
         error.request?.method ?? "UndefinedMethod",
