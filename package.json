@@ -2,7 +2,7 @@
   "name": "はてなの通知",
   "description": "はてなからのお知らせを表示する",
   "private": true,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "scripts": {
     "dev": "wxt",
