@@ -13,5 +13,11 @@ export default defineBackground(
     updateBadgeRegularly();
     handleLogin();
     markAsReadOnRequest();
+
+    console.log(1);
+    chrome.runtime.onInstalled.addListener(async () => {
+      console.log(2);
+      await chrome.action.setBadgeText({ text: "!" });
+    });
   },
 );

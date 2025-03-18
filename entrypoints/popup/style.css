@@ -2,6 +2,7 @@ body {
   margin: 12.5 7.5px;
   width: 315px;
   height: 415px;
+  font-size: 100%;
 }
 
 iframe {
